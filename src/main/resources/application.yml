@@ -1,1 +1,11 @@
-
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: 'jdbc:mysql://localhost:3308/db-social'
+    username: sys
+    password: hj125kl
+    driver-class-name: 'com.mysql.cj.jdbc.Driver'
+#spring.jpa.show-sql: true
