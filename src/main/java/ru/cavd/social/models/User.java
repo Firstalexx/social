@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

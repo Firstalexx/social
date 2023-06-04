@@ -11,8 +11,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/user")
 public class UserController {
-
     @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
     public UserService userService;
 //    @RequestBody Customer customer
 //    @PostMapping(path="/add")
@@ -21,7 +23,7 @@ public class UserController {
 //            , @RequestParam String password) {
 //        return userService.saveUser(name, email, password);
 //    }
-
+    //TODO: CHECK DOUBLING E-MAILS
     @PostMapping(path="/add")
     public @ResponseBody User addNewUser (@RequestBody User user) {
         return userService.saveUser(user);
