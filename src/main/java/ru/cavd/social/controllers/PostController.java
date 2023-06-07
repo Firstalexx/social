@@ -21,13 +21,14 @@ public class PostController {
     public PostService postService;
 
     @PostMapping(path="/add")
-    public @ResponseBody Post addNewUser (@RequestBody Post post) {
+    public @ResponseBody Post addNewPost(@RequestBody Post post) {
         return postService.savePost(post);
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<Post> getAllPosts() {
-        return postService.findAllPosts();
+    public @ResponseBody Iterable<Post> getAllPosts(@RequestParam(defaultValue = "0") Integer pageNo,
+                                                    @RequestParam(defaultValue = "5") Integer pageSize) {
+        return postService.findAllPosts(pageNo, pageSize);
     }
 
 //    @GetMapping(path="/{id}", produces = "application/json")
@@ -44,4 +45,9 @@ public class PostController {
     return postService.findByIdPost(id);
 }
 
+    @DeleteMapping(path = "/{id}")
+    public void deleteByIdPost(@PathVariable long id) {
+        postService.findByIdPost(id);
+    }
+//deleteByIdPost
 }
